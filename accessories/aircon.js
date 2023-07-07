@@ -24,11 +24,13 @@ class AirConAccessory extends BroadlinkRMAccessory {
     this.HeatingCoolingStates = HeatingCoolingStates;
     config.heatOnly = config.heatOnly || false;
     config.coolOnly = config.coolOnly || false;
+    config.dryEnable = config.dryEnable || false;
 
     const HeatingCoolingConfigKeys = {};
     HeatingCoolingConfigKeys[Characteristic.TargetHeatingCoolingState.OFF] = 'off';
     HeatingCoolingConfigKeys[Characteristic.TargetHeatingCoolingState.COOL] = 'cool';
     HeatingCoolingConfigKeys[Characteristic.TargetHeatingCoolingState.HEAT] = 'heat';
+    HeatingCoolingConfigKeys[Characteristic.TargetHeatingCoolingState.DRY] = 'dry';
     HeatingCoolingConfigKeys[Characteristic.TargetHeatingCoolingState.AUTO] = 'auto';
     this.HeatingCoolingConfigKeys = HeatingCoolingConfigKeys;
     
@@ -848,6 +850,7 @@ class AirConAccessory extends BroadlinkRMAccessory {
           validValues: [0,2]
         });
     }
+
 
     this.serviceManager.addGetCharacteristic({
       name: 'currentTemperature',
